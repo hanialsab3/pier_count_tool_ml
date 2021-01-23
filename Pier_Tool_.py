@@ -17,19 +17,21 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 
 
 # Use the application default credentials
-Corpus = pd.read_csv(r"C:\Users\aalsabe\Documents\GitHub\pier_count_tool_ml\Pier_Count_Tool_Dataset_01.23.2021.csv",encoding='utf-8',low_memory=False)
+Corpus = pd.read_csv(r"C:\Users\hania\Documents\GitHub\pier_count_tool_ml\Pier_Count_Tool_Dataset_01.23.2021.csv",encoding='utf-8',low_memory=False)
 Corpus=Corpus.replace(np.nan,"0")
 Corpus.info()
 print(Corpus.head())
-print(Corpus['EXT - Total Piers', 'EDG - Drive Piers'])
-# TargetDF= Corpus['EXT - Total Piers', 'EXT - Drive Piers',	'EDG - Total Piers', 'EDG - Drive Piers']
-# print(TargetDF)
+TargetDF= Corpus[['EXT - Total Piers', 'EXT - Drive Piers',	'EDG - Total Piers', 'EDG - Drive Piers']]
+print(TargetDF)
 
-# Corpus=Corpus.sample(frac=1)
-# Corpus=Corpus.astype(float)
-# TargetDataframe=TargetDataframe.astype(float)
-# Train_X, Test_X, Train_Y, Test_Y = model_selection.train_test_split(Corpus, TargetDataframe ,test_size=0.3)
-#
+# Corpus.drop([0:3])
+Corpus= Corpus[3:]
+Corpus.head()
+Corpus=Corpus.sample(frac=1)
+Corpus=Corpus.astype(float)
+TargetDF=TargetDF.astype(float)
+Train_X, Test_X, Train_Y, Test_Y = model_selection.train_test_split(Corpus, TargetDF ,test_size=0.2)
+
 # # fit the training dataset on the NB classifier
 # Naive = naive_bayes.MultinomialNB()
 # SVM= svm.SVC(gamma='scale')
@@ -51,9 +53,3 @@ print(Corpus['EXT - Total Piers', 'EDG - Drive Piers'])
 # print("precision score:",precision_score(predictions_NB, Test_Y))
 # print("recall score score:",recall_score(predictions_NB,Test_Y))
 # print("confusion matrix:",confusion_matrix(predictions_NB,Test_Y))
-
-
-# while (1):
-#     x=input("Enter tweet")
-#     Predicted_answer = Naive.predict(x)
-#     print(Predicted_answer)
