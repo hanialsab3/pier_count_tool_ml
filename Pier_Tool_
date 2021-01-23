@@ -17,7 +17,7 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 
 
 # Use the application default credentials
-Corpus = pd.read_csv(r"C:\Users\aalsabe\Documents\Gemini\Tools\Prediction Models\ML Dataset.csv",encoding='utf-8',low_memory=False)
+Corpus = pd.read_csv(r"C:\Users\aalsabe\Documents\GitHub\pier_count_tool_ml\Pier_Count_Tool_Dataset_01.23.2021.csv",encoding='utf-8',low_memory=False)
 Corpus=Corpus.replace(np.nan,"0")
 TargetDataframe= Corpus['EXT - TP']
 
