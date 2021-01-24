@@ -25,12 +25,14 @@ TargetDF= Corpus[['EXT - Total Piers', 'EXT - Drive Piers',	'EDG - Total Piers',
 print(TargetDF)
 
 # Corpus.drop([0:3])
-Corpus= Corpus[3:]
-Corpus.head()
-Corpus=Corpus.sample(frac=1)
-Corpus=Corpus.astype(float)
-TargetDF=TargetDF.astype(float)
-Train_X, Test_X, Train_Y, Test_Y = model_selection.train_test_split(Corpus, TargetDF ,test_size=0.2)
+Corpus.drop(columns=['Project #'])
+Corpus.drop(['Project #', 'Opportunity Title', 'Pier Load Calcs'], axis='columns',inplace=True)
+print(Corpus.head())
+Corpus.info()
+# Corpus=Corpus.sample(frac=1)
+# Corpus=Corpus.astype(float)
+# TargetDF=TargetDF.astype(float)
+# Train_X, Test_X, Train_Y, Test_Y = model_selection.train_test_split(Corpus, TargetDF ,test_size=0.2)
 
 # # fit the training dataset on the NB classifier
 # Naive = naive_bayes.MultinomialNB()
